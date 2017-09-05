@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lang Switch</title>
+</head>
+<body>
+
+<p data-translate-key="greet">挨拶</p>
+
+<button class="ru">ru</button>
+<button class="ua">ua</button>
+<button class="en">en</button>
+
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script>
+    var dict = {
+        en: {
+            'greet':'greetings'
+        },
+        ua: {
+            'greet':'вітаю'
+        },
+        ru: {
+            'greet':'приветствую'
+        }
+    };
+
+    $.html5Translate = function(dict, lang){
+
+        $('[data-translate-key]').each(function(){
+            $(this).html( dict[ lang ][ $(this).data('translateKey') ] );
+        });
+
+    };
+
+    $('.en').on('click', function () {
+        $.html5Translate(dict, 'en');
+    });
+    $('.ru').on('click', function () {
+        $.html5Translate(dict, 'ru');
+    });
+    $('.ua').on('click', function () {
+        $.html5Translate(dict, 'ua');
+    })
+
+
+</script>
+</body>
+</html>
